@@ -81,10 +81,7 @@ export class UserEditComponent {
                     else {
                        
                        var y = response.project;
-                       var r = y.split("[");
-
-
-                   
+  
                     }
                 },
 
