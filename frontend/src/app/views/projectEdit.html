@@ -1,0 +1,50 @@
+<h1>{{title}}</h1>
+<br/>
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-1">
+        <form #EditForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name of Project</label>
+                <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="pj.nombre" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Initial Date</label>
+                <input class="form-control" type="date" name="dateIn" #dateIn="ngModel" [(ngModel)]="pj.dateIn" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Final Date</label>
+                <input class="form-control" #dateFn="ngModel" [(ngModel)]="pj.dateFn" type="date" name="dateFn" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Video Conference</label>
+                <select class="form-control" #tool1="ngModel" [(ngModel)]="pj.tool1" name="tool1" id="exampleFormControlSelect1">
+                    <option>Skype</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Scrum Administration</label>
+                <select class="form-control" #tool2="ngModel" [(ngModel)]="pj.tool2" name="tool2" id="exampleFormControlSelect1">
+                    <option>VSTS</option>
+                    <option>Jira</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Git version control system</label>
+                <select class="form-control" #tool3="ngModel" [(ngModel)]="pj.tool3" name="tool3" id="exampleFormControlSelect1">
+                    <option>GitHub</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Repository</label>
+                <select class="form-control" #tool4="ngModel" [(ngModel)]="pj.tool4" name="tool4" id="exampleFormControlSelect1">
+                    <option>Dropbox</option>
+                    <option>GoogleDrive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">{{title}}</button>
+            <input type="text" />
+        </form>
+    </div>
+</div>

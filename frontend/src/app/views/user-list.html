@@ -1,0 +1,27 @@
+<div class="row container-fluid" *ngIf="initialMeeting">
+    <div class="col-sm-9 col-sm-offset-1">
+        <form #meetingForm="ngForm" (ngSubmit)="createMeeting()">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Initial Meeting</label>
+                <input class="form-control" type="date" name="in_meet" #dateIn="ngModel" [(ngModel)]="meetin.in_meet" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Hour Meeting</label>
+                <input class="form-control" #hour="ngModel" [(ngModel)]="meetin.hour" type="text" name="hour" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Description</label>
+                <input type="textarea" class="form-control" name="description" maxlength="300" #description="ngModel" [(ngModel)]="meetin.description"
+                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Link Meeting</label>
+                <input type="text" class="form-control" name="link" #link="ngModel" [(ngModel)]="meetin.link" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Name">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Meeting</button>
+            <input type="text" />
+            <button type="button" class="btn btn-info" (click)="cancelMeeting()">Cancel</button>
+        </form>
+    </div>
+</div>

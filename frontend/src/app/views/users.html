@@ -1,0 +1,85 @@
+<h1>Users</h1>
+
+<div class="col-lg-6" *ngIf="viewUsers">
+    <div *ngIf="alertUpdate">
+        <div class="alert alert-info">
+            {{alertMessage}}
+        </div>
+    </div>
+    <form #updateForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-12">
+        <h1>{{titulo}}</h1>
+        <br/>
+        <p>
+            <label for="">Name</label>
+            <input type="text" #name="ngModel" name="nombre" [(ngModel)]="user.nombre" class="form-control" required>
+            <span *ngIf="!name.valid && name.touched">
+                Name is required
+            </span>
+        </p>
+        <br/>
+        <p>
+            <label for="">Last Name</label>
+            <input type="text" #surname="ngModel" name="apellidos" [(ngModel)]="user.apellidos" class="form-control" required>
+            <span *ngIf="!surname.valid && surname.touched">
+                Surnames are required
+            </span>
+        </p>
+        <br/>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Profile</label>
+            <select class="form-control" #profile="ngModel" [(ngModel)]="user.perfil" name="perfil" id="exampleFormControlSelect1">
+                <option>Scrum Master</option>
+                <option>Product Owner</option>
+                <option>Developer</option>
+                <option>Tester</option>
+            </select>
+        </div>
+        <p>
+            <label for="">Email</label>
+            <input type="email" #email="ngModel" name="email" [(ngModel)]="user.email" class="form-control" required>
+            <span *ngIf="!email.valid && email.touched">
+                Email is required
+            </span>
+        </p>
+        <br/>
+        <p>
+            <label for="">Password</label>
+            <input type="password" #password="ngModel" name="password" [(ngModel)]="user.password" class="form-control" required>
+            <span *ngIf="!email.valid && email.touched">
+                Password is required
+            </span>
+        </p>
+        <br/>
+        <input type="submit" value="Register" class="btn btn-primary">
+        <input type="text" />
+        <button type="button" class="btn btn-info" (click)="listUsers()">List Users</button>
+    </form>
+    <br/>    
+</div>
+
+<!-- Maquetación de la tabla para listar todos los usuarios-->
+
+<div class="row container" *ngIf = "viewUsersList">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Name</th>
+                        <th scope="col" class="text-center">Last Name</th>
+                        <th scope="col" class="text-center">Profile</th>
+                        <th scope="col" class="text-center">Email</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let users of usersList">                        
+                        <td>{{users.nombre}}</td>
+                        <td>{{users.apellidos}}</td>
+                        <td>{{users.perfil}}</td>
+                        <td>{{users.email}}</td>
+                        <td><a class="btn btn-xs btn-info" id="tam1" href="#">Edit</a>   <a id="tam2" class="btn btn-xs btn-danger tam" href="#">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

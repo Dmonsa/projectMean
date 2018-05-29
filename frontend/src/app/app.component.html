@@ -1,0 +1,88 @@
+<div *ngIf="identity" class="row d">
+  <div class="col-lg-1 navigation">
+    <h1 class="head-title-">
+      <a [routerLink]="['/home']">
+        <i class="fa fa-globe icons" aria-hidden="true"></i>{{title}}</a>
+    </h1>
+    <nav id="navigation">
+      <a [routerLink]="['/search']" [routerLinkActive]="['actived']">
+        <i class="fa fa-search icons" aria-hidden="true"></i>
+        Search
+      </a>
+      <a [routerLink]="['/project']" [routerLinkActive]="['actived']">
+        <i class="fa fa-star icons" aria-hidden="true"></i>
+        Projects
+      </a>
+      <a [routerLink]="['/teams']" [routerLinkActive]="['actived']">
+        <i class="fa fa-trademark icons" aria-hidden="true"></i>
+        Teams
+      </a>
+      <a [routerLink]="['/users']" [routerLinkActive]="['actived']">
+        <i class="fa fa-users icons" aria-hidden="true"></i>
+        Users
+      </a>
+      <a [routerLink]="['/tools']" [routerLinkActive]="['actived']">
+        <i class="fa fa-cog icons" aria-hidden="true"></i>
+        Tools
+      </a>
+    </nav>
+    <nav id="user_logged">
+      <!--div class="user-image">
+        <img id="image_logged" src="{{url + 'get-image-user/' + identity.image}}" />
+      </div-->
+      <span id="name_user">
+        {{identity.name}}
+      </span>
+      <a [routerLink]="['/editar-usuario']" [routerLinkActive]="['actived']">
+        <i class="fa fa-user icons" aria-hidden="true"></i>
+        My user
+      </a>
+      <a (click)="logout()">
+        <i class="fa fa-sign-out icons" aria-hidden="true"></i>
+        Logout
+      </a>
+    </nav>
+  </div>
+  <div [class.hidden]="!identity" class="col-lg-11">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+<div class="text-center">
+  <div *ngIf="!identity" class="row container">
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100 p-t-85 p-b-20">
+          <div *ngIf="errorMessage">
+            <div class="alert alert-info">
+              <strong>Error </strong>{{errorMessage}}
+            </div>
+          </div>
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+            <span class="login100-form-title p-b-70">
+              GSD AGILE
+            </span>
+            <span class="login100-form-avatar">
+              <img src="assets/images/Outsourced.png" alt="AVATAR">
+            </span>
+
+            <div class="wrap-input100 m-t-85 m-b-35" data-validate="Enter username">
+              <input class="input100" type="email" #email="ngModel" name="username" [(ngModel)]="user.email" required>
+              <span class="focus-input100" data-placeholder="Username"></span>
+            </div>
+
+            <div class="wrap-input100 m-b-50" data-validate="Enter password">
+              <input class="input100" type="password" #password="ngModel" name="pass" [(ngModel)]="user.password" required>
+              <span class="focus-input100" data-placeholder="Password"></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <input class="login100-form-btn" type="submit" value="Login">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

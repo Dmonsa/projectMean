@@ -1,0 +1,75 @@
+<h1>{{title}}</h1>
+<br/>
+
+<div class="row cotainer fluit" *ngIf = "viewteams">
+    <div class="col-sm-9 col-sm-offset-1">
+        <form #teamForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name of Team</label>
+                <input type="email" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="team.nombre" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Location</label>
+                <input class="form-control" type="text" name="location" #location="ngModel" [(ngModel)]="team.location" id="" aria-describedby="emailHelp"
+                    placeholder="Location">
+            </div>
+            <!--div class="form-group">
+                <label for="exampleInputPassword1">Final Date</label>
+                <input class="form-control" #dateFn="ngModel" [(ngModel)]="project.dateFn" type="date" name="dateFn" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Video Conference</label>
+                <select class="form-control" #tool1="ngModel" [(ngModel)]="project.tool1"  name="tool1" id="exampleFormControlSelect1">
+                    <option>Skype</option>                   
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Scrum Administration</label>
+                <select class="form-control" #tool2="ngModel" [(ngModel)]="project.tool2"  name="tool2" id="exampleFormControlSelect1">
+                    <option>VSTS</option>
+                    <option>Jira</option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Git version control system</label>
+                <select class="form-control" #tool3="ngModel" [(ngModel)]="project.tool3"  name="tool3" id="exampleFormControlSelect1">
+                    <option>GitHub</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Repository</label>
+                <select class="form-control" #tool4="ngModel" [(ngModel)]="project.tool4"  name="tool4" id="exampleFormControlSelect1">
+                    <option>Dropbox</option>
+                    <option>GoogleDrive</option>
+                </select>
+            </div-->
+            <button type="submit" class="btn btn-primary">Create</button>
+            <input type="text" />
+            <button type="button" class="btn btn-info" (click)="listTeams()">List Teams</button>
+        </form>
+    </div>
+</div>
+
+<!-- Maquetación de la tabla para listar todos los equipos-->
+
+<div class="row container" *ngIf="viewteamsList">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">Name of Team</th>
+                        <th scope="col" class="text-center">Location</th>                        
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let teams of teamsList">
+                        <td>{{teams.nombre}}</td>
+                        <td>{{teams.location}}</td>                        
+                        <td><a class="btn btn-xs btn-info" id="tam1" href="#">Edit</a>   <a id="tam2" class="btn btn-xs btn-danger tam" href="#">Delete</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

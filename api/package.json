@@ -1,0 +1,22 @@
+{
+  "name": "gsd",
+  "version": "1.0.0",
+  "description": "globlal software",
+  "main": "nodemon index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Monsalve",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "jwt-simple": "^0.5.1",
+    "moment": "^2.22.1",
+    "mongoose": "^5.0.15",
+    "nodemailer": "^4.6.5",
+    "nodemon": "^1.17.3",
+    "xoauth2": "^1.2.0"
+  }
+}

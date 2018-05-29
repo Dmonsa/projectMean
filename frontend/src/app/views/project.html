@@ -1,0 +1,114 @@
+<h1>{{title}}</h1>
+<br/>
+
+<div class="container-fluid" *ngIf="meeting  && viewProjects">
+    <div class="col-sm-9 col-sm-offset-1">
+        <form #projectForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="meeting">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name of Project</label>
+                <input type="email" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="project.nombre" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Initial Date</label>
+                <input class="form-control" type="date" name="dateIn" #dateIn="ngModel" [(ngModel)]="project.dateIn" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Final Date</label>
+                <input class="form-control" #dateFn="ngModel" [(ngModel)]="project.dateFn" type="date" name="dateFn" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Video Conference</label>
+                <select class="form-control" #tool1="ngModel" [(ngModel)]="project.tool1" name="tool1" id="exampleFormControlSelect1">
+                    <option>Skype</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Scrum Administration</label>
+                <select class="form-control" #tool2="ngModel" [(ngModel)]="project.tool2" name="tool2" id="exampleFormControlSelect1">
+                    <option>VSTS</option>
+                    <option>Jira</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Git version control system</label>
+                <select class="form-control" #tool3="ngModel" [(ngModel)]="project.tool3" name="tool3" id="exampleFormControlSelect1">
+                    <option>GitHub</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Repository</label>
+                <select class="form-control" #tool4="ngModel" [(ngModel)]="project.tool4" name="tool4" id="exampleFormControlSelect1">
+                    <option>Dropbox</option>
+                    <option>GoogleDrive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+            <input type="text" />
+            <button type="button" class="btn btn-info" (click)="listProjects()">Show Project</button>
+        </form>
+    </div>
+</div>
+
+<!-- Maquetar reunion inicial -->
+<br>
+<br>
+<div class="row container-fluid" *ngIf="initialMeeting">
+    <div class="col-sm-9 col-sm-offset-1">
+        <form #meetingForm="ngForm" (ngSubmit)="createMeeting()">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Initial Meeting</label>
+                <input class="form-control" type="date" name="in_meet" #dateIn="ngModel" [(ngModel)]="meetin.in_meet" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Hour Meeting</label>
+                <input class="form-control" #hour="ngModel" [(ngModel)]="meetin.hour" type="text" name="hour" id="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Description</label>
+                <input type="textarea" class="form-control" name="description" maxlength="300" #description="ngModel" [(ngModel)]="meetin.description"
+                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Link Meeting</label>
+                <input type="text" class="form-control" name="link" #link="ngModel" [(ngModel)]="meetin.link" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="Name">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Meeting</button>
+            <input type="text" />
+            <button type="button" class="btn btn-info" (click)="cancelMeeting()">Cancel</button>
+        </form>
+    </div>
+</div>
+<!-- Maquetación de la tabla para listar todos los projectos-->
+
+<div class="row" *ngIf="viewProjectsList">
+    <div class="col-sm-12">
+        <table class="table table-bordered table-striped" style="width: 100%">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">Name Project</th>
+                    <th scope="col" class="text-center">Date Init</th>
+                    <th scope="col" class="text-center">Date Fn</th>
+                    <th scope="col" class="text-center">Tool 1</th>
+                    <th scope="col" class="text-center">Tool 2</th>
+                    <th scope="col" class="text-center">Tool 3</th>
+                    <th scope="col" class="text-center">Tool 4</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let projects of projectsList">
+                    <td>{{projects.nombre}}</td>
+                    <td>{{projects.dateIn | date: 'medium'}}</td>
+                    <td>{{projects.dateFn | date: 'medium'}}</td>
+                    <td>{{projects.tool1}}</td>
+                    <td>{{projects.tool2}}</td>
+                    <td>{{projects.tool3}}</td>
+                    <td>{{projects.tool4}}</td>
+                    <td><a [routerLink]="['/editar-usuario', projects._id]" type="button" class="btn btn-info btn-xs">Edit</a>    <span style="margin-left: 5px"><button type="button" class="btn btn-danger btn-xs">Delete</button></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
