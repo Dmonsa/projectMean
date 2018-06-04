@@ -23,12 +23,12 @@ function saveMeeting(req,res) {
     
     meeting.save((err, result) => {
         if (err) {
-            res.status(500).send({ message: 'Error el el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
             if (!result) {
-                res.status(404).send({ message: 'No se pudo registrar la reunion' });
+                res.status(404).send({ message: 'The meeting could not be registered' });
             }
             else {
                 Mail.sendMail();
@@ -48,13 +48,13 @@ function listTeam(req,res) {
         Team.find({},(err,teams)=>{
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
     
             else {
     
                 if (!teams) {
-                    res.status(404).send({ message: 'No hay equipos'});
+                    res.status(404).send({ message: 'There are no meetings'});
                 }
     
                 else {
@@ -68,7 +68,7 @@ function listTeam(req,res) {
         Team.find({_id:teamId},(err,team)=>{
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
     
             else {

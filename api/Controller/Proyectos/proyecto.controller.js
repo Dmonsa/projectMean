@@ -2,6 +2,7 @@
  'use strict'
 var Project = require('../../Modelo/Proyectos/proyecto.model');
 var Mail = require('../../Services/SendMail');
+var moment = require('moment');
 
 
 
@@ -13,27 +14,28 @@ function saveProject(req,res) {
 
    
     project.nombre = params.nombre;
-    project.dateIn = params.dateIn;
     project.dateFn = params.dateFn;
     project.tool1 = params.tool1;
     project.tool2 = params.tool2;
     project.tool3 = params.tool3;
     project.tool4 = params.tool4;
-    
-    console.log(params);
+
+
+    var d = moment(params.dateIn).format('YYYY-MM-DD');
+    console.log(d);
     
     project.save((err, result) => {
 
         if (err) {
-            res.status(500).send({ message: 'Error el el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
             if (!result) {
-                res.status(404).send({ message: 'No se pudo registrar el proyecto' });
+                res.status(404).send({ message: 'The project could not be registered' });
             }
             else {
-                Mail.sendEmail();
+                
                 res.status(200).send({ message: result });
             }
         }
@@ -50,13 +52,13 @@ function listProject(req,res) {
         Project.find({},(err,projects)=>{
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
     
             else {
     
                 if (!projects) {
-                    res.status(404).send({ message: 'No hay proyectos'});
+                    res.status(404).send({ message: 'There are no projects'});
                 }
     
                 else {
@@ -67,16 +69,16 @@ function listProject(req,res) {
     }
 
     else {
-        Project.find({_id : projectId},(err,project)=>{
+        Project.findById({_id : projectId},(err,project)=>{
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
     
             else {
     
                 if (!project) {
-                    res.status(404).send({ message: 'No se encontro proyecto'});
+                    res.status(404).send({ message: 'No project found'});
                 }
                 else {
                     res.status(200).send({ project });
@@ -94,13 +96,13 @@ function UpdateProject(req, res) {
     Project.findByIdAndUpdate({_id: projectId}, params, (err, projectUpdate) => {
 
         if (err) {
-            res.status(500).send({ message: 'Error en el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
 
             if (!projectUpdate) {
-                res.status(404).send({ message: 'El proyecto no existe' });
+                res.status(404).send({ message: 'The project does not exist' });
             }
 
             else {
@@ -121,13 +123,13 @@ function DeleteProject(req, res) {
     Project.findByIdAndRemove({_id:projectId}, (err, projectRemove) => {
 
         if (err) {
-            res.status(500).send({ message: 'Error en el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
 
             if (!projectRemove) {
-                res.status(404).send({ message: 'El proyecto no existe' });
+                res.status(404).send({ message: 'The project does not exist' });
             }
 
             else {

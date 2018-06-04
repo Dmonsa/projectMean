@@ -30,13 +30,13 @@ function saveUser(req, res) {
 				user.save((err, userStored) => {
 
 					if (err) {
-						res.status(500).send({ message: 'Error al guardar el usuario' });
+						res.status(500).send({ message: 'Error when saving the user' });
 					}
 
 					else {
 
 						if (!userStored) {
-							res.status(500).send({ message: 'No sea ha resgistrado el usuaraio' });
+							res.status(500).send({ message: 'The user has not registered' });
 						}
 
 						else {
@@ -47,12 +47,12 @@ function saveUser(req, res) {
 			}
 
 			else {
-				res.status(200).send({ message: 'Rellena todos los campos' });
+				res.status(200).send({ message: 'Fill in all the fields' });
 			}
 		});
 	}
 	else {
-		res.status(200).send({ message: 'Introduce la contrseña' });
+		res.status(200).send({ message: 'Enter the password' });
 	}
 }
 
@@ -64,13 +64,13 @@ function loginUser(req, res) {
 
 	User.findOne({ email: email.toLowerCase() }, (err, user) => {
 		if (err) {
-			res.status(500).send({ message: 'Error en la petición' });
+			res.status(500).send({ message: 'Error in the request' });
 		}
 
 		else {
 
 			if (!user) {
-				res.status(404).send({ message: 'El usuario no existe' });
+				res.status(404).send({ message: 'User does not exist' });
 			}
 			else {
 				// Comprobar el password...
@@ -90,7 +90,7 @@ function loginUser(req, res) {
 					}
 
 					else {
-						res.status(404).send({ message: 'El usuario no ha podido logearse' });
+						res.status(404).send({ message: 'The user could not log in' });
 					}
 				});
 			}
@@ -107,13 +107,13 @@ function listUsers(req, res) {
         User.find({}, (err, users) => {
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
 
             else {
 
                 if (!users) {
-                    res.status(404).send({ message: 'No hay usuarios' });
+                    res.status(404).send({ message: 'No users' });
                 }
 
                 else {
@@ -124,16 +124,16 @@ function listUsers(req, res) {
     }
 
     else {
-        User.find({ _id: userId }, (err, user) => {
+        User.findById({ _id: userId }, (err, user) => {
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
 
             else {
 
                 if (user) {
-                    res.status(404).send({ message: 'No se encontro usuario' });
+                    res.status(404).send({ message: 'No user found' });
                 }
             }
         });
@@ -146,7 +146,7 @@ function UpdateUser(req, res) {
 	var update = req.body;
 
 	if (userId != req.user.sub) {
-	 return	res.status(500).send({ message: 'No tienes permisos para ejecutar esta acción' });
+	 return	res.status(500).send({ message: 'You do not have permission to execute this action' });
 	}
 
 	else {
@@ -154,12 +154,12 @@ function UpdateUser(req, res) {
 		User.findByIdAndUpdate(userId, update, (err, userUpdate) => {
 
 			if (err) {
-				res.status(500).send({ message: 'Error al actualizar el usuario' });
+				res.status(500).send({ message: 'Error updating the user' });
 			}
 
 			else {
 				if (!userUpdate) {
-					res.status(404).send({ message: 'No se ha podido actualizar el usuario' });
+					res.status(404).send({ message: 'The user could not be updated' });
 				}
 
 				else {
@@ -179,13 +179,13 @@ function DeleteUser(req, res) {
     User.findByIdAndRemove({ _id: userId }, (err, userRemove) => {
 
         if (err) {
-            res.status(500).send({ message: 'Error en el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
 
             if (!userRemove) {
-                res.status(404).send({ message: 'El usuario no existe' });
+                res.status(404).send({ message: 'User does not exist' });
             }
 
             else {

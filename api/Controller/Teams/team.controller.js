@@ -21,7 +21,7 @@ function saveTeam(req,res) {
 
         else {
             if (!result) {
-                res.status(404).send({ message: 'No se pudo registrar el equipo' });
+                res.status(404).send({ message: 'Could not register the team' });
             }
             else {
                 res.status(200).send({ message: result });
@@ -40,13 +40,13 @@ function listTeam(req,res) {
         Team.find({},(err,teams)=>{
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
     
             else {
     
                 if (!teams) {
-                    res.status(404).send({ message: 'No hay equipos'});
+                    res.status(404).send({ message: 'There are no teams'});
                 }
     
                 else {
@@ -60,13 +60,13 @@ function listTeam(req,res) {
         Team.find({_id:teamId},(err,team)=>{
 
             if (err) {
-                res.status(500).send({ message: 'Error en el servidor' });
+                res.status(500).send({ message: 'Error on the server' });
             }
     
             else {
     
                 if (team) {
-                    res.status(404).send({ message: 'No se encontro equipo'});
+                    res.status(404).send({ message: 'No equipment found'});
                 }
             }
         });
@@ -81,13 +81,13 @@ function updateTeam(req, res) {
     Team.findByIdAndUpdate({_id: teamId}, params, (err, teamUpdate) => {
 
         if (err) {
-            res.status(500).send({ message: 'Error en el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
 
             if (!teamUpdate) {
-                res.status(404).send({ message: 'El equipo no existe' });
+                res.status(404).send({ message: 'The equipment does not exist' });
             }
 
             else {
@@ -108,13 +108,13 @@ function deleteTeam(req, res) {
     Team.findByIdAndRemove({_id:teamId}, (err, teamRemove) => {
 
         if (err) {
-            res.status(500).send({ message: 'Error en el servidor' });
+            res.status(500).send({ message: 'Error on the server' });
         }
 
         else {
 
             if (!teamRemove) {
-                res.status(404).send({ message: 'El equipo no existe' });
+                res.status(404).send({ message: 'The equipment does not exist' });
             }
 
             else {

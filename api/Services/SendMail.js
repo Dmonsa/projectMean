@@ -19,9 +19,9 @@ exports.sendMail = function () {
 
     var mailOptions = {
         from: 'dmonsac@gmail.com',
-        to: 'vaneg823@gmail.com',
-        subject: 'Funciono',
-        text: ''
+        to: 'dmonsac@gmail.com',
+        subject: 'Initial Meeting',
+        text: 'The initial meeting is on Tuesday, June 5 at 10:00 a.m. Join the link https://www.skype.com/en/'
     }
 
     transporter.sendMail(mailOptions, function (err, res) {

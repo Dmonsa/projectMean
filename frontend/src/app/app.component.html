@@ -1,7 +1,7 @@
 <div *ngIf="identity" class="row d">
   <div class="col-lg-1 navigation">
     <h1 class="head-title-">
-      <a [routerLink]="['/home']">
+      <a [routerLink]="['/home']" [routerLinkActive]="['actived']">
         <i class="fa fa-globe icons" aria-hidden="true"></i>{{title}}</a>
     </h1>
     <nav id="navigation">
@@ -33,7 +33,7 @@
       <span id="name_user">
         {{identity.name}}
       </span>
-      <a [routerLink]="['/editar-usuario']" [routerLinkActive]="['actived']">
+      <a [routerLink]="['/edit-user']" [routerLinkActive]="['actived']">
         <i class="fa fa-user icons" aria-hidden="true"></i>
         My user
       </a>
@@ -80,6 +80,27 @@
             <div class="container-login100-form-btn">
               <input class="login100-form-btn" type="submit" value="Login">
             </div>
+            <ul class="login-more p-t-100">
+              <!-- li class="m-b-8">
+                <span class="txt1">
+                  Forgot
+                </span>
+  
+                <a href="#" class="txt2">
+                  Username / Password?
+                </a>
+              </li-->
+  
+              <li>
+                <span class="txt1">
+                  Don’t have an account?
+                </span>
+  
+                <a href="#" class="txt2">
+                  Contact the system administrator
+                </a>
+              </li>
+            </ul>  
           </form>
         </div>
       </div>

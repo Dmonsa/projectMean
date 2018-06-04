@@ -11,8 +11,10 @@ import { UsersComponent  } from './components/users.component';
 import { ToolsComponent } from './components/tools.component';
 import { HomeComponent } from './components/home.component';
 import { ProjectComponent } from './components/project.component';
+import {ProjectEditComponent} from './components/projectEdit.component';
 import { TeamComponent } from './components/team.component';
 import { SearchComponent } from './components/search.component';
+
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { SearchComponent } from './components/search.component';
     ToolsComponent,
     HomeComponent,
     ProjectComponent,
+    ProjectEditComponent,
     TeamComponent,
     SearchComponent
   ],
