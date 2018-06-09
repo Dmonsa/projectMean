@@ -417,6 +417,7 @@ iframe {
 }
 
 @media (max-width: 992px) {
+  background-color: #fff;
   .alert-validate::before {
     visibility: visible;
     opacity: 1;

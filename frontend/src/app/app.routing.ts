@@ -21,7 +21,7 @@ const appRutes: Routes = [
     { path: 'project/:id', component: ProjectEditComponent},
     { path: 'teams', component: TeamComponent },
     { path: 'users', component: UsersComponent },
-    { path: 'edit-user/:id', component: UserEditComponent },
+    { path: 'edit-user', component: UserEditComponent },
     { path: 'search', component: SearchComponent }
 ]
 

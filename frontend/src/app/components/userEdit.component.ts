@@ -7,15 +7,13 @@ import { global } from '../globals/global';
 
 @Component({
     selector: 'users',
-    //templateUrl: '../views/projectEdit.html',
     templateUrl: '../views/user-edit.html',
     providers: [UserService],
-    //styleUrls: ['../styles/user.css'],
+    //styleUrls: ['../styles/user.css']
 })
 
 export class UserEditComponent {
-    public titulo: 'USERS';
-    public pj: Project;
+    public title = "USER EDIT";
     public token;
     public identity;
     public alertMessage;
@@ -24,7 +22,7 @@ export class UserEditComponent {
     public usersList;
     public viewUsersList = false;
     public viewUsers = true;
-    public title;
+    
 
     constructor(
         private _userService: UserService, private _route: Router,
@@ -34,12 +32,11 @@ export class UserEditComponent {
         //LocalStorage...
         this.identity = this._userService.getIdentity();
         this.token = this._userService.getToken();
-        this.title = 'Edit User';
         //this.pj = new Project('', new Date(), new Date(), '', '', '', '');
     }
 
     ngOnInit() {
-        //this.userEdit();
+        this.userEdit();
     }
 
    
@@ -76,12 +73,12 @@ export class UserEditComponent {
             this._userService.listUsers(id,this.token).subscribe(
 
                 response => {
-                    if (!response.project) {
+                    if (!response.message) {
                         this._route.navigate(['/']);
                     }
                     else {
                        
-                       var y = response.project;
+                       var y = response.message;
   
                     }
                 },
