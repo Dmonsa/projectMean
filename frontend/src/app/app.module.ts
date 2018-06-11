@@ -14,6 +14,7 @@ import { ProjectComponent } from './components/project.component';
 import {ProjectEditComponent} from './components/projectEdit.component';
 import { TeamComponent } from './components/team.component';
 import { SearchComponent } from './components/search.component';
+import {PracticeComponent} from './components/practices.component';
 
 
 
@@ -24,6 +25,7 @@ import { SearchComponent } from './components/search.component';
     UserEditComponent,
     ToolsComponent,
     HomeComponent,
+    PracticeComponent,
     ProjectComponent,
     ProjectEditComponent,
     TeamComponent,

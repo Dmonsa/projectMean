@@ -11,14 +11,16 @@ import { ProjectComponent } from './components/project.component';
 import { TeamComponent } from './components/team.component';
 import { SearchComponent } from './components/search.component';
 import { ProjectEditComponent } from './components/projectEdit.component';
+import { PracticeComponent } from './components/practices.component';
 
 // Defino el arreglo de rutas
 const appRutes: Routes = [
     { path: 'login', component: AppComponent },
     { path: 'home', component: HomeComponent },
+    { path: 'practices', component: PracticeComponent },
     { path: 'tools', component: ToolsComponent },
     { path: 'project', component: ProjectComponent },
-    { path: 'project/:id', component: ProjectEditComponent},
+    { path: 'project/:id', component: ProjectEditComponent },
     { path: 'teams', component: TeamComponent },
     { path: 'users', component: UsersComponent },
     { path: 'edit-user', component: UserEditComponent },
